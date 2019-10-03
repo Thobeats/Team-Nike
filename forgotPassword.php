@@ -30,7 +30,7 @@
 
                         mail($to, $subject, $body, $headers);
                          
-                        $msg = "<label class='text-danger text-center'>Reset Link sent</label>";
+                        $msg = "<label class='text-info text-center'>Reset Link sent</label>";
 
                     }
 
