@@ -29,6 +29,8 @@
                         $headers .= "Content-type: text/html; charset=iso-8859-1\n";
 
                         mail($to, $subject, $body, $headers);
+                         
+                        $msg = "<label class='text-danger text-center'>Reset Link sent</label>";
 
                     }
 
