@@ -12,38 +12,35 @@
             $msg = "<label class='text-danger'>Please fill in the field</label>";
         
         } else {
-            foreach ($data['users'] as $users)
-            {
+            $found = false;
+                foreach ($data['users'] as $users)
+                {
 
-                
+                    if ($email == $users['Email'])
+                    {
+                        $found = true;
+                        $Name = $users['Name'];
+                        $to = $email;
+                        $subject = 'donotreply, Password Reset';
+                        $body = "<h2>Hi $Name</h2>, follow the link to reset your password";
 
+                        $headers = "From: Team Nike Networth Tracker\n";
+                        $headers .= "MIME-Version: 1.0\n";
+                        $headers .= "Content-type: text/html; charset=iso-8859-1\n";
 
-               if ($email == $users['Email'])
-               {
+                        mail($to, $subject, $body, $headers);
 
-                    $Name = $users['Name'];
-                    $to = $email;
-                    $subject = 'donotreply, Password Reset';
-                    $body = "<h2>Hi $Name</h2>, follow the link to reset your password";
-
-                    $headers = "From: Team Nike Networth Tracker\n";
-                    $headers .= "MIME-Version: 1.0\n";
-                    $headers .= "Content-type: text/html; charset=iso-8859-1\n";
-
-                    mail($to, $subject, $body, $headers);
-                    
-                } 
-                
-                
-                
-
-                
-            }
-
-            $msg = "<label class='text-danger text-center'>This Email does not belong to an account</label>";
+                    }
 
 
+
+
+
+                }
+                if (!$found)
+                $msg = "<label class='text-danger text-center'>This Email does not belong to an account</label>";
         }
+
 
         
     }
