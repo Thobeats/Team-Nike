@@ -13,7 +13,7 @@
         } else {
             foreach ($data['users'] as $users){
                 if ($email !== $users['Email']){
-                    $msg = "<p class='alert alert-info text-center'>This Email does not belong to an account</p>";
+                    $msg = "<label class='text-danger text-center'>This Email does not belong to an account</label>";
                 } else {
                     
                     if ($email === $users['Email']) {

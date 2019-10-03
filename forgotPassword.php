@@ -8,34 +8,44 @@
 
         $email = $_POST['email'];
 
-        if (empty($email)){
-            $msg = "<p class='alert alert-info'>Please fill in the field</p>";
+        if (empty($email)) {
+            $msg = "<label class='text-danger'>Please fill in the field</label>";
+        
         } else {
-            foreach ($data['users'] as $users){
-                if ($email !== $users['Email']){
-                    $msg = "<p class='alert alert-info'>This Email does not belong to an account</p>";
-                } else {
+            foreach ($data['users'] as $users)
+            {
+
+                
+
+
+               if ($email == $users['Email'])
+               {
+
+                    $Name = $users['Name'];
+                    $to = $email;
+                    $subject = 'donotreply, Password Reset';
+                    $body = "<h2>Hi $Name</h2>, follow the link to reset your password";
+
+                    $headers = "From: Team Nike Networth Tracker\n";
+                    $headers .= "MIME-Version: 1.0\n";
+                    $headers .= "Content-type: text/html; charset=iso-8859-1\n";
+
+                    mail($to, $subject, $body, $headers);
                     
-                    if ($email === $users['Email']) {
+                } 
+                
+                
+                
 
-                        $Name = $users['Name'];
-                        $to = $email;
-                        $subject = 'Donotreply, Password Reset';
-                        $body = "<h2>Hi $Name</h2>, follow the link to reset your password";
-
-                        $headers = "From: Team Nike Networth Tracker\n";
-                        $headers .= "MIME-Version: 1.0\n";
-                        $headers .= "Content-type: text/html; charset=iso-8859-1\n";
-
-                        mail($to, $subject, $body, $headers);
-
-                        
-                           
-                    }
-
-                }
+                
             }
+
+            $msg = "<label class='text-danger text-center'>This Email does not belong to an account</label>";
+
+
         }
+
+        
     }
 
 
@@ -99,6 +109,12 @@
                 background: #0b3270;
             }
 
+            .response {
+                margin: 5px;
+                margin-left: 40%;
+                padding: 3px;
+            }
+
 
         
         
@@ -114,9 +130,11 @@
 
         <div class="container">
 
-            <?php if ($msg != '') {
-                echo  $msg;
-            } ?> </div>
+            <div class="response">
+                <?php if ($msg != '') {
+                    echo  $msg;
+                } ?> 
+            </div>
 
             
 
