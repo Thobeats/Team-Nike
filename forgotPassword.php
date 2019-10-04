@@ -20,8 +20,8 @@
                     {
                         $found = true;
                         $Name = $users['Name'];
-                        $to = $email;
-                        $subject = 'donotreply, Password Reset';
+                        $to = "$email";
+                        $subject = 'Password Reset';
                         $body = "<h2>Hi $Name</h2>, follow the link to reset your password";
 
                         $headers = "From: Team Nike Networth Tracker\n";
