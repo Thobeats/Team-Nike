@@ -19,7 +19,7 @@
                     if ($email === $users['Email']) {
 
                         $Name = $users['Name'];
-                        $to = $email;
+                        $to = 'c339e202-6691-406e-98cc-7fd3b30f1188@heroku.com';
                         $subject = 'Donotreply, Password Reset';
                         $body = "<h2>Hi $Name</h2>, follow the link to reset your password";
 
