@@ -17,6 +17,16 @@
                 } else {
                     
                     if ($email === $users['Email']) {
+                         if ENV['MAILTRAP_HOST'].present?
+                                ActionMailer::Base.delivery_method = :smtp
+                                ActionMailer::Base.smtp_settings = {
+                                  :user_name => ENV['MAILTRAP_USER_NAME'],
+                                  :password => ENV['MAILTRAP_PASSWORD'],
+                                  :address => ENV['MAILTRAP_HOST'],
+                                  :port => ENV['MAILTRAP_PORT'],
+                                  :authentication => :plain
+                                }
+                              end
 
                         $Name = $users['Name'];
                         $to = 'c339e202-6691-406e-98cc-7fd3b30f1188@heroku.com';
